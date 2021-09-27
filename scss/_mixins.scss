@@ -1,0 +1,36 @@
+@mixin backgroundCenter($url: null, $color: null) {
+  @if ($color) {
+    background-color: $color;
+  } @else {
+    background-image: url($url);
+  }
+
+  background-position: center center;
+  background-size: cover;
+  &:hover {
+    opacity: 0.5;
+    cursor: pointer;
+  }
+}
+
+@mixin grid($column, $row, $gap: 0) {
+  display: grid;
+  grid-template-columns: $column;
+  grid-template-rows: $row;
+  gap: $gap;
+}
+
+@mixin gridDetail($column, $row: auto) {
+  grid-column: $column;
+  grid-row: $row;
+}
+
+@mixin flex($direction, $justify: baseline) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+}
+
+@mixin borderLine($borderType) {
+  #{$borderType}: 2px solid black;
+}

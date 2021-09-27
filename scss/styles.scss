@@ -1,0 +1,181 @@
+@use 'sass:math';
+@use 'sass:list';
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+@import '_mixins';
+
+body {
+  @include grid(repeat(4, 2.5fr), auto);
+  font-family: 'Work Sans', sans-serif;
+  @include borderLine(border);
+  height: 100vh;
+}
+
+.left {
+  @include borderLine(border-right);
+  .left__top {
+    .left__top__header {
+      font-size: 0.7em;
+      margin-top: 100;
+      margin-bottom: 27px;
+      padding: 8px;
+    }
+    p {
+      margin-bottom: 14px;
+      padding: 8px;
+    }
+    nav {
+      ul {
+        @include grid(1fr, repeat(5, 1fr));
+        li {
+          padding: 6px;
+          @include borderLine(border-bottom);
+          font-size: 0.7em;
+          &:first-child {
+            @include borderLine(border-top);
+          }
+          &:hover {
+            background-color: rgba(0, 0, 0, 0.11);
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+  .left__bottom {
+    @include flex(column, space-around);
+    margin-top: 130px;
+    font-size: 0.7em;
+    height: 30vh;
+    padding: 8px;
+
+    div {
+      @include flex(column);
+
+      strong {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.middle {
+  @include borderLine(border-right);
+  @include grid(1fr, 5fr 1fr);
+
+  header {
+    @include borderLine(border-bottom);
+
+    > h1:first-of-type {
+      font-size: 0.7em;
+      font-weight: 100;
+      margin-bottom: 27px;
+      padding: 8px;
+    }
+
+    .middleBox {
+      margin-bottom: 150px;
+      padding: 8px;
+      h1 {
+        font-size: 2em;
+        padding: 8px;
+        font-family: 'PT Sans', sans-serif;
+      }
+    }
+    p {
+      padding: 10px;
+    }
+  }
+
+  footer {
+    @include flex(column, space-between);
+    padding: 10px;
+    margin-bottom: 10px;
+
+    span {
+      font-size: 0.7em;
+    }
+
+    small {
+      font-size: 0.9em;
+    }
+  }
+}
+
+.right {
+  @include grid(1fr, 5fr 1fr, 2px);
+  @include gridDetail(span 2);
+  padding: 2px;
+
+  .right__top {
+    @include grid(repeat(2, 1fr), repeat(2, 1fr), 2px);
+
+    .right__topFirst {
+      @include gridDetail(1, span 2);
+      @include backgroundCenter(
+        'https://images.unsplash.com/photo-1604762525988-f9bfac96c40d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
+      );
+    }
+    .right__topSecond {
+      @include gridDetail(2, 1);
+      @include backgroundCenter(
+        'https://images.unsplash.com/photo-1593642532454-e138e28a63f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
+      );
+    }
+    .right__topThird {
+      @include gridDetail(2, 2);
+      @include grid(repeat(3, 1fr), repeat(4, 1fr), 2px);
+      & > :nth-child(1) {
+        @include gridDetail(list.slash(1, 3), span 2);
+        @include backgroundCenter(
+          'https://images.unsplash.com/photo-1593642532454-e138e28a63f4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
+        );
+      }
+      & > :nth-child(2) {
+        @include gridDetail(3, span 2);
+        @include backgroundCenter(
+          'https://images.unsplash.com/photo-1559578490-a1310afab842?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80'
+        );
+      }
+      & > :nth-child(3) {
+        @include gridDetail(1, list.slash(3, 5));
+        @include backgroundCenter(
+          'https://images.unsplash.com/photo-1532588213355-52317771cce6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=967&q=80'
+        );
+      }
+      & > :nth-child(4) {
+        @include gridDetail(list.slash(2, 4), span 2);
+        @include backgroundCenter(
+          'https://images.unsplash.com/photo-1596729265256-65efcec497bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80'
+        );
+      }
+    }
+  }
+
+  .right__bottom {
+    @include grid(repeat(5, 1fr), repeat(2, 1fr), 2px);
+    & > :nth-child(1) {
+      @include gridDetail(1, span 2);
+      @include backgroundCenter(
+        'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=958&q=80'
+      );
+    }
+
+    & > :nth-child(2) {
+      @include gridDetail(2, 1);
+      @include backgroundCenter($color: #fad390);
+    }
+
+    & > :nth-child(3) {
+      @include gridDetail(2, 2);
+      @include backgroundCenter($color: #e58e26);
+    }
+
+    & > :nth-child(4) {
+      @include gridDetail(list.slash(3, 6), span 2);
+      @include backgroundCenter(
+        'https://images.unsplash.com/photo-1563331771-a17e66a7af7b?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1170&q=80'
+      );
+    }
+  }
+}
