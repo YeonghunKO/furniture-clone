@@ -8,7 +8,6 @@ body {
   @include grid(repeat(4, 2.5fr), auto);
   font-family: 'Work Sans', sans-serif;
   @include borderLine(border);
-  height: 100vh;
 }
 
 .left {
